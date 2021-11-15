@@ -1,7 +1,7 @@
 
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:flutter_playground/base_models/api_status_codes_enum.dart';
+import 'package:photo_cloud/base_models/api_status_codes_enum.dart';
 
 ApiStatusCodes responseToStatusCodeEnum ({required http.Response response}) {
   return _intToStatusCodeEnum(statusCode: response.statusCode);

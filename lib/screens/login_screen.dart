@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/logic/api_login.dart';
-import 'package:flutter_playground/widgets/base/empty.dart';
-import 'package:flutter_playground/widgets/login/login_input.dart';
+import 'package:photo_cloud/logic/api_login.dart';
+import 'package:photo_cloud/widgets/base/empty.dart';
+import 'package:photo_cloud/widgets/login/login_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

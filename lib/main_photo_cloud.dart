@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/screens/login_screen.dart';
+import 'package:photo_cloud/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());

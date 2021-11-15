@@ -1,8 +1,8 @@
 
 import 'dart:io';
 
-import 'package:flutter_playground/dtos/envelope.dart';
-import 'package:flutter_playground/logic/http_response_to_status_code.dart';
+import 'package:photo_cloud/dtos/envelope.dart';
+import 'package:photo_cloud/logic/http_response_to_status_code.dart';
 import 'package:http/http.dart';
 
 import 'api_status_codes_enum.dart';

@@ -1,10 +1,10 @@
 
 import 'dart:convert';
 
-import 'package:flutter_playground/api/api_paths.dart';
-import 'package:flutter_playground/base_models/api_error.dart';
-import 'package:flutter_playground/dtos/envelope.dart';
-import 'package:flutter_playground/dtos/login_dto.dart';
+import 'package:photo_cloud/api/api_paths.dart';
+import 'package:photo_cloud/base_models/api_error.dart';
+import 'package:photo_cloud/dtos/envelope.dart';
+import 'package:photo_cloud/dtos/login_dto.dart';
 import 'package:result_type/result_type.dart';
 import 'dart:async';
 
