@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.jumpdrive.fplayground.flutter_playground">
+    package="de.jumpdrive.dev.photocloud">
    <application
-        android:label="flutter_playground"
+        android:label="Photo Cloud"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

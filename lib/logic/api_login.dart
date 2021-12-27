@@ -1,8 +1,10 @@
 
 import 'dart:convert';
 
+import 'package:photo_cloud/api/api_base_headers.dart';
 import 'package:photo_cloud/api/api_paths.dart';
 import 'package:photo_cloud/base_models/api_error.dart';
+import 'package:photo_cloud/base_models/api_status_codes_enum.dart';
 import 'package:photo_cloud/dtos/envelope.dart';
 import 'package:photo_cloud/dtos/login_dto.dart';
 import 'package:result_type/result_type.dart';
@@ -38,8 +40,9 @@ Future<Result<LoginDTO, ApiError>> loginUser({required Uri serverBaseUrl, requir
 
   try {
     var data = {"email": username, "password": password};
+    var dataJson = json.encode(data);
 
-    final response = await http.post(userLoginUri(serverUri: serverBaseUrl), body: data)
+    final response = await http.post(userLoginUri(serverUri: serverBaseUrl), headers: headersJson, body: dataJson)
         .timeout(const Duration(seconds: 20));
 
     //TODO: Find a good solution how wo initially check for success
@@ -54,12 +57,12 @@ Future<Result<LoginDTO, ApiError>> loginUser({required Uri serverBaseUrl, requir
       return Success(LoginDTO.fromJson(env.resultJson));
 
     } else {
-      throw Exception('Unable to fetch products from the REST API');
+      return Failure(ApiError(apiStatusCode: ApiStatusCodes.UnknownNetworkError, errorMessage: "Invalid Server Response", errorMessageIntlCode: "invalidResponse"));
     }
 
   } on TimeoutException {
     return Failure(ApiError.timeout());
-  } on Error {
+  } on Exception catch (e) {
     return Failure(ApiError.unknownNetworkError());
   }
 }

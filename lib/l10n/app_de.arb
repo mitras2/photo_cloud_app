@@ -1,0 +1,10 @@
+{
+  "helloWorld": "Hallo Welt!",
+  "serverAddress": "Server-Adresse",
+  "login_emailAddress": "E-Mail",
+  "username": "Benutzername",
+  "password": "Passwort",
+  "button_login": "Anmelden",
+  "button_logging_in": "Wird angemendet",
+  "welcome": "Wilkommen"
+}

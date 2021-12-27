@@ -16,7 +16,7 @@ class Envelope {
     _result = json['result'];
     _errorMessage = json['errorMessage'];
     _errorCode = json['errorCode'];
-    _timeGenerated = DateTime(json['timeGenerated']);
+    _timeGenerated = DateTime.parse(json['timeGenerated']);
   }
 
   Map<String, dynamic>? _result;
@@ -28,7 +28,7 @@ class Envelope {
   String? get errorMessage => _errorMessage;
   String? get errorCode => _errorCode;
   DateTime get timeGenerated => _timeGenerated;
-  bool get success => _result != null && _errorMessage == null;
+  bool get success => _result != null && (_errorMessage == null || _errorMessage!.isEmpty);
   bool get fail => !success;
 
 }

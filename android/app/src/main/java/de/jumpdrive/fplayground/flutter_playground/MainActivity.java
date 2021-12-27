@@ -1,4 +1,4 @@
-package de.jumpdrive.fplayground.flutter_playground;
+package de.jumpdrive.dev.photocloud;
 
 import io.flutter.embedding.android.FlutterActivity;
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LoginInput extends StatelessWidget {
 
   final String label;
-  final Function validator;
+  final String? Function(String?) validator;
   final TextEditingController? controller;
   bool enabled;
 
@@ -14,14 +14,17 @@ class LoginInput extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label),
-          TextField(
+          Text(label + ":"),
+          TextFormField(
             controller: controller,
             enabled: enabled,
+            validator: validator,
+            // autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
-              labelText: label,
+              hintText: label,
             ),
 
           )

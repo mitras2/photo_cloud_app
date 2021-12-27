@@ -1,0 +1,13 @@
+{
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "serverAddress": "Server",
+  "login_emailAddress": "Email",
+  "username": "Username",
+  "password": "Password",
+  "button_login": "Login",
+  "button_logging_in": "Loggin in",
+  "welcome": "Welcome"
+}
