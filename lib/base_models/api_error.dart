@@ -27,6 +27,10 @@ class ApiError {
     return ApiError(apiStatusCode: ApiStatusCodes.Timeout, errorMessage: 'Timeout', errorMessageIntlCode: 'Timeout');
   }
 
+  factory ApiError.notLoggedIn() {
+    return ApiError(apiStatusCode: ApiStatusCodes.NotLoggedIn, errorMessage: 'Not logged in', errorMessageIntlCode: 'NotLoggedIn');
+  }
+
   factory ApiError.unknownNetworkError() {
     return ApiError(apiStatusCode: ApiStatusCodes.UnknownNetworkError, errorMessage: 'Unknown Network Error', errorMessageIntlCode: 'UnknownNetworkError');
   }

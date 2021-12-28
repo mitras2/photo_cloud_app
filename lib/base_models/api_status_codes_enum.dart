@@ -5,4 +5,5 @@ enum ApiStatusCodes {
   Timeout,
   NotAuthenticated,
   NotAuthorized,
+  NotLoggedIn
 }
