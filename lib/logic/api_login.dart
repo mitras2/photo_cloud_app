@@ -12,7 +12,7 @@ import 'dart:async';
 
 import 'package:http/http.dart' as http;
 
-Future<Result<LoginDTO, ApiError>> loginUser({required Uri serverBaseUrl, required String username, required String password}) async {
+Future<Result<LoginDTO, ApiError>> loginUser({required Uri serverBaseUrl, required String email, required String password}) async {
 
   // io.HttpClientRequest? connection;
   //
@@ -39,30 +39,38 @@ Future<Result<LoginDTO, ApiError>> loginUser({required Uri serverBaseUrl, requir
   // }
 
   try {
-    var data = {"email": username, "password": password};
+    var data = {"email": email, "password": password};
     var dataJson = json.encode(data);
 
-    final response = await http.post(userLoginUri(serverUri: serverBaseUrl), headers: headersJson, body: dataJson)
+    final Uri targetUri = userLoginUri(serverUri: serverBaseUrl);
+    final response = await http.post(targetUri, headers: headersJson, body: dataJson)
         .timeout(const Duration(seconds: 20));
 
-    //TODO: Find a good solution how wo initially check for success
-    if (response.statusCode == 200) {
-      var jsonResponse = json.decode(response.body);
-      Envelope env = Envelope.fromJson(jsonResponse);
+    var jsonResponse = json.decode(response.body);
+    Envelope env = Envelope.fromJson(jsonResponse);
 
-      if(env.fail) {
-        return Failure(ApiError.fromResponse(response, env));
-      }
-
-      return Success(LoginDTO.fromJson(env.resultJson));
-
-    } else {
-      return Failure(ApiError(apiStatusCode: ApiStatusCodes.UnknownNetworkError, errorMessage: "Invalid Server Response", errorMessageIntlCode: "invalidResponse"));
+    if(env.fail) {
+      return Failure(ApiError.fromResponse(response, env));
     }
+
+    return Success(LoginDTO.fromJson(env.resultJson));
+
+    // if (response.statusCode == 200) {
+    //   if(env.fail) {
+    //     return Failure(ApiError.fromResponse(response, env));
+    //   }
+    //
+    //   return Success(LoginDTO.fromJson(env.resultJson));
+    //
+    // } else {
+    //   return Failure(ApiError(apiStatusCode: ApiStatusCodes.UnknownNetworkError, errorMessage: "Invalid Server Response", errorMessageIntlCode: "invalidResponse"));
+    // }
 
   } on TimeoutException {
     return Failure(ApiError.timeout());
-  } on Exception catch (e) {
+  } on FormatException {
+    return Failure(ApiError(apiStatusCode: ApiStatusCodes.UnknownNetworkError, errorMessage: "Invalid Server Response", errorMessageIntlCode: "invalidResponse"));
+  }on Exception catch (e) {
     return Failure(ApiError.unknownNetworkError());
   }
 }
