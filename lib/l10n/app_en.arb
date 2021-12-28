@@ -9,5 +9,8 @@
   "password": "Password",
   "button_login": "Login",
   "button_logging_in": "Loggin in",
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "login_error_message_server": "Please input a valid sever url",
+  "login_error_message_email": "Please input a valid email address",
+  "login_error_message_password": "Please your password"
 }

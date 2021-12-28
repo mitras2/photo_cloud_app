@@ -6,5 +6,8 @@
   "password": "Passwort",
   "button_login": "Anmelden",
   "button_logging_in": "Wird angemendet",
-  "welcome": "Wilkommen"
+  "welcome": "Wilkommen",
+  "login_error_message_server": "Bitte gib die Adresse deines PhotoCloud Servers an",
+  "login_error_message_email": "Bitte gibt die E-Mail Adresse deines Benutzerkontos an",
+  "login_error_message_password": "Bitte gibt dein Passwort ein"
 }

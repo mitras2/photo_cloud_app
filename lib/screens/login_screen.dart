@@ -30,7 +30,11 @@ class _LoginScreenState extends State<LoginScreen> {
       loginAttemptRunning = true;
     });
 
-    bool isValid = this.validateInputs();
+    String url = textServer.value.text.trim();
+    String emailAddress = textUser.value.text.trim();
+    String password = textPassword.value.text.trim();
+    
+    bool isValid = validateInputs(serverUrl: url, email: emailAddress, password: password);
     if(!isValid) {
       setState(() {
         loginAttemptRunning = false;
@@ -38,16 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    String url = textServer.value.text;
-    String user = textUser.value.text;
-    String password = textPassword.value.text;
-
     Uri? serverUri;
     try {
       serverUri = Uri.parse(url);
     } on Exception {
       setState(() {
-        errorMessage = "Invalid Server URL";
+        errorMessage = errorMessage = AppLocalizations.of(context).login_error_message_server;
         loginAttemptRunning = false;
       });
       return;
@@ -55,25 +55,24 @@ class _LoginScreenState extends State<LoginScreen> {
 
     var result = await loginUser(
         serverBaseUrl: serverUri,
-        username: user,
+        email: emailAddress,
         password: password);
 
     setState(() {
       if (result.isFailure) {
         errorMessage = result.failure.errorMessage;
-      } else {
-        errorMessage = "";
       }
     });
 
-    //TODO: If successful, end this section of the app
     if (result.isSuccess) {
       setState(() {
+        // TODO: Uncomment
+        // errorMessage = "";
         errorMessage = "Success";
       });
 
       //Save the User-Login
-      await saveUserLogin(loginDTO: result.success, serverAddress: serverUri, username: user);
+      await saveUserLogin(loginDTO: result.success, serverAddress: serverUri, username: emailAddress);
       var userLogin = await getUserLogin();
       Navigator.pushNamed(context, Routes.home, arguments: userLogin);
     }
@@ -83,28 +82,24 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  bool validateInputs() {
-    String url = textServer.value.text;
-
-    if(url.trim().isEmpty || !isURL(url)) {
+  bool validateInputs({required String serverUrl, required String email, required String password}) {
+    if(serverUrl.isEmpty || !isURL(serverUrl)) {
       setState(() {
-        errorMessage = "Invalid URL";
+        errorMessage = AppLocalizations.of(context).login_error_message_server;
       });
      return false;
     }
 
-    String user = textUser.value.text;
-    if(user.trim().isEmpty) {
+    if(email.isEmpty || isEmail(email)) {
       setState(() {
-        errorMessage = "A username is required";
+        errorMessage = AppLocalizations.of(context).login_error_message_email;
       });
       return false;
     }
 
-    String password = textPassword.value.text;
     if(password.isEmpty) {
       setState(() {
-        errorMessage = "A password is required";
+        errorMessage = AppLocalizations.of(context).login_error_message_password;
       });
       return false;
     }
