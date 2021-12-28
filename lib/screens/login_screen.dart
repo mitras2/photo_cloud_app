@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
       serverUri = Uri.parse(url);
     } on Exception {
       setState(() {
-        errorMessage = errorMessage = AppLocalizations.of(context).login_error_message_server;
+        errorMessage = errorMessage = AppLocalizations.of(context)!.login_error_message_server;
         loginAttemptRunning = false;
       });
       return;
@@ -85,21 +85,21 @@ class _LoginScreenState extends State<LoginScreen> {
   bool validateInputs({required String serverUrl, required String email, required String password}) {
     if(serverUrl.isEmpty || !isURL(serverUrl)) {
       setState(() {
-        errorMessage = AppLocalizations.of(context).login_error_message_server;
+        errorMessage = AppLocalizations.of(context)!.login_error_message_server;
       });
      return false;
     }
 
-    if(email.isEmpty || isEmail(email)) {
+    if(email.isEmpty || !isEmail(email)) {
       setState(() {
-        errorMessage = AppLocalizations.of(context).login_error_message_email;
+        errorMessage = AppLocalizations.of(context)!.login_error_message_email;
       });
       return false;
     }
 
     if(password.isEmpty) {
       setState(() {
-        errorMessage = AppLocalizations.of(context).login_error_message_password;
+        errorMessage = AppLocalizations.of(context)!.login_error_message_password;
       });
       return false;
     }
@@ -138,6 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             validator: (_) => null,
                             enabled: !loginAttemptRunning,
                             controller: textPassword,
+                            obscureText: true,
                           ),
                           Container(
                               padding: const EdgeInsets.all(4),
