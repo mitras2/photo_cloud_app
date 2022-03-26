@@ -13,9 +13,9 @@ Future<void> saveUserLogin({required LoginDTO loginDTO, required Uri serverAddre
 
   prefs.setString(keyServerAddress, serverAddress.toString());
   prefs.setString(keyUsername, username);
-  prefs.setString(keyUserId, loginDTO.userId!);
-  prefs.setString(keyToken, loginDTO.token!);
-  prefs.setString(keyExpires, loginDTO.expires!);
+  prefs.setString(keyUserId, loginDTO.userId.uuid);
+  prefs.setString(keyToken, loginDTO.token);
+  prefs.setString(keyExpires, loginDTO.expires.millisecondsSinceEpoch.toString());
 
   return;
 }
