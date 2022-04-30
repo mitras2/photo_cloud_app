@@ -31,23 +31,21 @@ class MainScreen extends StatelessWidget {
             child:
               Container (
                 child:
-                  Image.asset(
-                    'assets/images/' + image_names[index],
-                    fit: BoxFit.cover,
-                  ),
+                  Hero(
+                    tag: image_names[index],
+                    child: Image.asset(
+                      'assets/images/' + image_names[index],
+                      fit: BoxFit.cover,
+                    ),
+                  )
               )
           );
         }
         ) ,
       ),
-      SafeArea(
-          child: Text("home of $name"),
-      )
+      // SafeArea(
+      //     child: Text("home of $name"),
+      // )
     ],);
-
-    return Container(
-      child: Text("home of $name"),
-    );
-
   }
 }

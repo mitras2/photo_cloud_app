@@ -17,8 +17,10 @@ class _ImageViewerState extends State<ImageScreen> {
   late final PageController controller;
 
   void createController(initalImageName) {
-    var startIndex = image_names.indexOf(initalImageName);
+    if(controller != null)
+      return;
 
+    var startIndex = image_names.indexOf(initalImageName);
     controller = PageController(
       initialPage: startIndex,
     );
@@ -56,26 +58,6 @@ class _ImageViewerState extends State<ImageScreen> {
     final startImageName = ModalRoute.of(context)!.settings.arguments as String;
     createController(startImageName);
 
-    // return CupertinoPageScaffold(
-    //     navigationBar: CupertinoNavigationBar(
-    //     // Try removing opacity to observe the lack of a blur effect and of sliding content.
-    //     backgroundColor: CupertinoColors.systemGrey.withOpacity(0.5),
-    //   middle: const Text('Sample Code'),
-    //   ),
-    //   child: KeyboardListener(
-    //       focusNode: FocusNode(),
-    //       onKeyEvent: (e) => keyListener(e),
-    //       child: PageView(
-    //         controller: controller,
-    //         children: List.generate(
-    //             image_names.length,
-    //                 (index) =>
-    //                 Image.asset('assets/images/' + image_names[index])
-    //         ),
-    //       )
-    //   )
-    // );
-
     return Stack(
       children: [
         KeyboardListener(
@@ -86,13 +68,16 @@ class _ImageViewerState extends State<ImageScreen> {
             children: List.generate(
                 image_names.length,
                     (index) =>
-                    Image.asset('assets/images/' + image_names[index])
+                    Hero(
+                      tag: image_names[index],
+                      child: Image.asset('assets/images/' + image_names[index]),
+                    )
             ),
           )
         ),
         CupertinoNavigationBar(
           // Try removing opacity to observe the lack of a blur effect and of sliding content.
-          backgroundColor: CupertinoColors.systemGrey.withOpacity(0.3),
+          backgroundColor: CupertinoColors.tertiaryLabel.withOpacity(0.84),
           middle: const Text('Image'),
         ),
       ],
