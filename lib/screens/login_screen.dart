@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:photo_cloud/base_imports.dart';
-import 'package:photo_cloud/logic/api_login.dart';
+import 'package:photo_cloud/api_calls/api_login.dart';
 import 'package:photo_cloud/logic/store_save_login.dart';
-import 'package:photo_cloud/main_photo_cloud.dart';
+import 'package:photo_cloud/main.dart';
 import 'package:photo_cloud/widgets/login/login_input.dart';
 import 'package:validated/validated.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
     String url = textServer.value.text.trim();
     String emailAddress = textUser.value.text.trim();
     String password = textPassword.value.text.trim();
-    
+
     bool isValid = validateInputs(serverUrl: url, email: emailAddress, password: password);
     if(!isValid) {
       setState(() {

@@ -1,6 +1,6 @@
 import 'package:photo_cloud/base_imports.dart';
 import 'package:photo_cloud/logic/store_save_login.dart';
-import 'package:photo_cloud/main_photo_cloud.dart';
+import 'package:photo_cloud/main.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

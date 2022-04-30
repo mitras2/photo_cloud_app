@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_cloud/screens/image_viewer.dart';
 import 'package:photo_cloud/screens/login_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,6 +14,7 @@ class Routes {
   static String splash = "/splash";
   static String login = "/login";
   static String home = "/home";
+  static String image = "/image";
 }
 
 class MyApp extends StatelessWidget {
@@ -26,11 +28,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      initialRoute: Routes.splash,
+      initialRoute: Routes.home,
+      // initialRoute: Routes.splash,
       routes: {
         Routes.splash: (context) => const SplashScreen(),
         Routes.login: (context) => const LoginScreen(),
         Routes.home: (context) => const MainScreen(),
+        Routes.image: (context) => const ImageScreen()
       },
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
