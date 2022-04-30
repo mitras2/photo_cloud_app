@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:photo_cloud/prototyping/image_list.dart';
 
@@ -16,11 +15,13 @@ class _ImageViewerState extends State<ImageScreen> {
 
   late final PageController controller;
 
-  void createController(initalImageName) {
-    if(controller != null)
+  void createController(initialImageName) {
+    if(controller != null) {
       return;
+    }
 
-    var startIndex = image_names.indexOf(initalImageName);
+
+    var startIndex = image_names.indexOf(initialImageName);
     controller = PageController(
       initialPage: startIndex,
     );

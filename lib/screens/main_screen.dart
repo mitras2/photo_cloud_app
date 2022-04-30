@@ -13,7 +13,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserLoginPrefs? user = ModalRoute.of(context)?.settings.arguments as UserLoginPrefs?;
-    final String name = user?.username ?? "none";
+    //final String name = user?.username ?? "none";
 
     // https://stackoverflow.com/questions/58740104/flutter-read-all-files-from-asset-folder
     //final manifestJson = await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
