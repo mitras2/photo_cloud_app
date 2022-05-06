@@ -1,16 +1,38 @@
-# flutter_playground
+# PhotoCloud App
 
-LHs Flutter playground project
+The PhotoCloud App aims to be a free and open source multi platform frontend for the [OpenPhotoCloud](https://github.com/mitras2/openPhotoCloudServer-Net) and in more time maybe even to more open photo platforms.
 
-## Getting Started
+## Important
+*This project is before alpha stage and absolutely not usable for production*
+Also i develop this app in my (very rare) spare time. So the development speed 
 
-This project is a starting point for a Flutter application.
+## Vision and Concept
+### Most important Points
+- Free/Open source/libre
+- Selfhosted server
+- Uses only the assigned amount of storage
+- Allows sharing of libraries with other users
+- Cross platform availability
 
-A few resources to get you started if this is your first Flutter project:
+### Vision/Idea
+The idea of the PhotoCloud app is, to provide a free, libre, open source application and server
+that empower users to save, share and archive all of their photos in their personal, selfhosted cloud.
+The app is connected to one user account on one OpenPhotoCloud Server.
+It synchronizes it's data with this server and keeps keeps only images in the required (or configured)
+resolution on the device.  
+Additionally it will be possible to set a maximum amount of storage to use. 
+This assigned amount of storage will be filled with the latest (and favorite) photos. 
+Everything else will only be available as a minimal thumbnail for the gallery. 
+When watching old images, those files need to e loaded from the server.
+This makes it possible to save ALL of your images to your OpenPhotoCloud server without filling you devices storage.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Technical background
+The app is based on the dart language and the flutter framework with the aim to run smooth on devices of most relevant OSs.
+Officially this app right now targets iOS, Android, Linux, MacOS and Windows (in this order).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Contribute
+Contribution is highly welcome. To contribute to this project please write a message to me. 
+Open source projects need at least a little bit of coordination and this project is in it's initial phase
+where decisions weight heavier for the future.
+
+
