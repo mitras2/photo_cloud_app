@@ -13,12 +13,12 @@ class ImageScreen extends StatefulWidget {
 
 class _ImageViewerState extends State<ImageScreen> {
 
-  late final PageController controller;
+  late PageController controller;
 
   void createController(initialImageName) {
-    if(controller != null) {
-      return;
-    }
+    // if(controller is PageController) {
+    //   return;
+    // }
 
 
     var startIndex = image_names.indexOf(initialImageName);
@@ -67,12 +67,17 @@ class _ImageViewerState extends State<ImageScreen> {
           child: PageView(
             controller: controller,
             children: List.generate(
-                image_names.length,
-                    (index) =>
-                    Hero(
-                      tag: image_names[index],
-                      child: Image.asset('assets/images/' + image_names[index]),
-                    )
+              image_names.length,
+                (index) =>
+                GestureDetector(
+                  onDoubleTap: () => {},
+                  child: InteractiveViewer(
+                    child: Hero(
+                      tag:image_names[index],
+                      child: Image.asset('assets/images/' + image_names[index])
+                    ),
+                  ),
+                )
             ),
           )
         ),
