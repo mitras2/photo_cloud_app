@@ -24,8 +24,10 @@ class UserDTO extends UserSimpleDTO {
       required UuidValue id,
       required String eMail,
       required String username,
+      required bool deleted,
+      required DateTime lastChanged,
       StoreSimpleDTO? defaultStore,
-      List<StoreDTO>? stores,}) : super(id: id, username: username) {
+      List<StoreDTO>? stores,}) : super(id: id, username: username, deleted: deleted, lastChanged: lastChanged) {
     _eMail = eMail;
     _defaultStore = defaultStore;
     _stores = stores ?? [];

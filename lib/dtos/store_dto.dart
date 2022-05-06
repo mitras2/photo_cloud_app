@@ -25,9 +25,11 @@ class StoreDTO extends StoreSimpleDTO {
     required String storeName,
     required UserSimpleDTO storeCreator,
     required UserSimpleDTO storeOwner,
+    required bool deleted,
+    required DateTime lastChanged,
     List<PermissionsUserDTO>? permissionsList,
-    PermissionsDirectDTO? userPermissions,})
-      : super (id: id, storeName: storeName, userPermissions: userPermissions) {
+    PermissionsDirectDTO? userPermissions,
+  }) : super (id: id, storeName: storeName, userPermissions: userPermissions, deleted: deleted, lastChanged: lastChanged) {
     _storeCreator = storeCreator;
     _storeOwner = storeOwner;
     _permissionsList = permissionsList ?? [];

@@ -1,3 +1,4 @@
+import 'package:photo_cloud/dtos/basic_sync_dto.dart';
 import 'package:photo_cloud/dtos/permissions_direct_dto.dart';
 import 'package:uuid/uuid.dart';
 
@@ -5,7 +6,7 @@ import 'package:uuid/uuid.dart';
 /// storeName : "Peters Store"
 /// userPermissions : {"read":true,"write":true,"admin":true}
 
-class StoreSimpleDTO {
+class StoreSimpleDTO extends BasicSyncDTO{
 
   late UuidValue _id;
   late String _storeName;
@@ -18,20 +19,24 @@ class StoreSimpleDTO {
   StoreSimpleDTO({
     required UuidValue id,
     required String storeName,
-    PermissionsDirectDTO? userPermissions,}){
+    required bool deleted,
+    required DateTime lastChanged,
+    PermissionsDirectDTO? userPermissions,
+  }) : super(deleted: deleted, lastChanged: lastChanged) {
     _id = id;
     _storeName = storeName;
     _userPermissions = userPermissions;
   }
 
-  StoreSimpleDTO.fromJson(dynamic json) {
+  StoreSimpleDTO.fromJson(dynamic json): super.fromJson(json) {
     _id = UuidValue(json['id']);
     _storeName = json['storeName'];
     _userPermissions = json['userPermissions'] != null ? PermissionsDirectDTO.fromJson(json['userPermissions']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
+    final map = super.toJson();
+
     map['id'] = _id.uuid;
     map['storeName'] = _storeName;
     if (_userPermissions != null) {
