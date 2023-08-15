@@ -1,8 +1,9 @@
 # PhotoCloud App
-
 The PhotoCloud App aims to be a free and open source multi platform frontend for the [OpenPhotoCloud](https://github.com/mitras2/openPhotoCloudServer-Net) and in more time maybe even to more open photo platforms.
 
 ## Important
+**This Project is currently not maintained as I do not have the time to continue working on it**
+
 *This project is before alpha stage and absolutely not usable for production*
 Also i develop this app in my (very rare) spare time. So the development speed 
 
